@@ -29,17 +29,17 @@ export default function HomeClient({ rooms }: HomeClientProps) {
   }
 
   return (
-    <div className="relative min-h-screen flex flex-col bg-zinc-200 flex-1 p-8">
+    <>
+    <div className="relative h-screen flex flex-col bg-zinc-200 p-8">
       {/* Header*/}
-      <div>
-        <h1 className="text-5xl pt-16 pb-8">Välj en tid</h1>
-        <div className="my-6">
-          <Dropdown rooms={ rooms } onFilterRoomsSelect={handleFilterRoomsSelect} />
-        </div>
+      <div className='min-h-1/6 h-2/6 flex justify-between flex-col'>
+        <h1 className="text-4xl mt-12">Välj en tid</h1>
+
+        <Dropdown rooms={ rooms } onFilterRoomsSelect={handleFilterRoomsSelect} />
       </div>
 
       {/* Body */}
-      <div>
+      <div className='min-h-4/6 h-4/6 relative'>
         <DatePicker 
           onFilterDateSelect={handleFilteredDateChange}
           filteredDate={filteredDate}
@@ -54,14 +54,15 @@ export default function HomeClient({ rooms }: HomeClientProps) {
       </div>
 
       {/* Footer */}
-      <div className='mb-8 mt-4'>
-        <button type="button" className="w-full bg-black text-white py-3 rounded-xl disabled:opacity-50"
-          disabled={!selectedRoom}
+      <div className='flex items-center pt-6'>
+        <button className="w-full bg-black text-white py-2 rounded-xl disabled:opacity-50" 
           onClick={() => {router.push(`/book?roomId=${selectedRoom?.id}&date=${selectedDate}`)}}
+          disabled={!selectedRoom}
         >
-          Nästa
+        Nästa
         </button>
       </div>
     </div>
+    </>
   );
 }

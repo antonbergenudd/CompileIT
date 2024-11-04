@@ -51,12 +51,11 @@ export default function RoomTable({ rooms, onTimeSlotSelect, selectedTimeSlot, f
     let {day1, day2, day3} = TimeFactory(filteredDate);
 
     return (
-        <div className="flex w-full h-full border border-zinc-400 rounded-xl max-h-72 overflow-scroll relative">
-
+        <div className="flex w-full border border-zinc-400 rounded-xl overflow-hidden h-4/5">
             {/* Day 1 */}
-            <div className="flex-1 h-full">
-                <div className='text-center border-r border-zinc-400 text-lg md:text-2xl border-b border-zinc-400 p-2'>{day1.date.format('D MMM')}</div>
-                <div className='p-2 border-r border-zinc-400 overflow-scroll h-full'>
+            <div className='h-full flex flex-col flex-1'>
+                <div className='flex-none text-center text-md md:text-xl border-b border-r border-zinc-400 p-2'>{day1.date.format('D MMM')}</div>
+                <div className='border-r border-zinc-400 flex-grow overflow-y-auto p-2'>
                     {rooms.map((room: Room) => (
                         <RoomTableItem key={room.id} room={room} day={day1} onTimeSlotSelect={onTimeSlotSelect} selectedTimeSlot={selectedTimeSlot} />
                     ))}
@@ -64,9 +63,9 @@ export default function RoomTable({ rooms, onTimeSlotSelect, selectedTimeSlot, f
             </div>
 
             {/* Day 2 */}
-            <div className="flex-1 border-r border-zinc-400">
-                <div className='text-center text-lg md:text-2xl border-b border-zinc-400 p-2'>{day2.date.format('D MMM')}</div>
-                <div className='p-2'>
+            <div className="h-full flex flex-col border-r border-zinc-400 flex-1">
+                <div className='text-center text-md md:text-xl border-b border-zinc-400 p-2'>{day2.date.format('D MMM')}</div>
+                <div className='flex-grow overflow-y-auto p-2'>
                     {rooms.map((room: Room) => (
                         <RoomTableItem key={room.id} room={room} day={day2} onTimeSlotSelect={onTimeSlotSelect} selectedTimeSlot={selectedTimeSlot} />
                     ))}
@@ -74,9 +73,9 @@ export default function RoomTable({ rooms, onTimeSlotSelect, selectedTimeSlot, f
             </div>
 
             {/* Day 3 */}
-            <div className="flex-1">
-                <div className='text-center text-lg md:text-2xl border-b border-zinc-400 p-2'>{day3.date.format('D MMM')}</div>
-                <div className='p-2'>
+            <div className='h-full flex flex-col flex-1'>
+                <div className='text-center text-md md:text-xl border-b border-zinc-400 p-2'>{day3.date.format('D MMM')}</div>
+                <div className='flex-grow overflow-y-auto p-2'>
                     {rooms.map((room: Room) => (
                         <RoomTableItem key={room.id} room={room} day={day3} onTimeSlotSelect={onTimeSlotSelect} selectedTimeSlot={selectedTimeSlot} />
                     ))}

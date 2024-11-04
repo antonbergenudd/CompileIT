@@ -10,7 +10,13 @@ const config: Config = {
     './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      minHeight: {
+        '2/6': '33.333333%',  // Adds min-h-1/3 class
+        '4/6': '66.666666%',  // Adds min-h-1/3 class
+        '1/6': '16.666667%'
+      },
+    },
   },
   plugins: [],
 }

@@ -13,7 +13,7 @@ export default function RoomTableItem({ room, day, onTimeSlotSelect, selectedTim
                     onTimeSlotSelect(room, time.toISOString())
                 }} 
                 className={clsx(
-                    'rounded-md border border-green-700 p-2 my-2 text-sm',
+                    'rounded-md border border-green-700 p-2 my-2 text-xs',
                     {
                         'bg-green-900': selectedTimeSlot == (time.toISOString() + room.id),
                         'text-white': selectedTimeSlot == (time.toISOString() + room.id),

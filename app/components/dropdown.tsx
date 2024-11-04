@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { SlArrowDown } from 'react-icons/sl';
 
 export default function Dropdown({ rooms, onFilterRoomsSelect }: DropdownProps) {
-  const [checkedRooms, setCheckedRooms] = useState<string[]>(rooms.map(room => room.id));
+  const [checkedRooms, setCheckedRooms] = useState<string[]>([]);
 
   const handleCheckboxChange = (roomId: string) => {
     setCheckedRooms((prevChecked) => {
@@ -17,7 +17,7 @@ export default function Dropdown({ rooms, onFilterRoomsSelect }: DropdownProps) 
   };
 
   const applyFilter = () => {
-    onFilterRoomsSelect(checkedRooms);
+    onFilterRoomsSelect(checkedRooms.length == 0 ? rooms.map(room => room.id) : checkedRooms);
   }
 
   const clearSelection = () => {
@@ -26,8 +26,9 @@ export default function Dropdown({ rooms, onFilterRoomsSelect }: DropdownProps) 
 
   return (
     <Menu as="div" className="relative z-40">
-      <MenuButton className="w-52 justify-between border border-zinc-400 inline-flex items-center rounded-xl p-3 text-md md:text-xl">
-        Mötesrum <SlArrowDown />
+      <MenuButton className="w-40 justify-between border border-zinc-300 inline-flex items-center rounded-xl p-2 px-3 text-md md:text-xl">
+        {checkedRooms.length > 0 ? `${checkedRooms.length} valda rum` : 'Mötesrum'}
+        <SlArrowDown />
       </MenuButton>
 
       <MenuItems as="div" className="absolute left-0 right-0 mt-2 py-8 w-auto border border-zinc-300 bg-zinc-200 drop-shadow-xl rounded-xl text-sm p-2 transition duration-100 ease-out">
