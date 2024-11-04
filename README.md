@@ -6,12 +6,12 @@ First, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+npx kill-port 3000 (if not closed automatically, kill node process with this)
+npx prisma generate (updates the prisma client, always run after changes to schema)
+npx prisma db push (synchronize the prisma schema with the database)
+npm run prisma-seed (seeds db with new data from seed file, custom command)
+
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
