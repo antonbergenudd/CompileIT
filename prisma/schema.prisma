@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Room {
+  id                String      @id @default(cuid())
+  name              String
+  spots             Int
+  
+  bookings          Booking[]
+}
+
+model Booking {
+  id          String      @id @default(cuid())
+  bookedBy    String
+  date        DateTime
+  
+  
+  room        Room        @relation(fields: [roomId], references: [id])
+  roomId      String
+}
