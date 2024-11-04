@@ -35,6 +35,8 @@ const BookPage = () => {
 
       setFeedbackDialogOpen(true);
     } catch (error) {
+      // Implement error handling here
+
       console.error("Error creating booking and updating time:", error);
     }    
   };
