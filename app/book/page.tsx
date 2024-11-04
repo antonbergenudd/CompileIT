@@ -64,7 +64,7 @@ const BookPage = () => {
 
       {/* Feedback dialog */}
       <Dialog open={feedbackDialogOpen} onClose={() => router.push('/home')} className="relative z-50">
-      <div className="fixed inset-0 bg-black opacity-50"></div>
+        <div className="fixed inset-0 bg-black opacity-50"></div>
       
         <div className="md-rounded fixed inset-0 flex w-screen items-center justify-center p-4">
           <DialogPanel className="flex max-w-lg space-y-4 border bg-white px-12 py-6 rounded-xl items-center flex-col justify-center">
